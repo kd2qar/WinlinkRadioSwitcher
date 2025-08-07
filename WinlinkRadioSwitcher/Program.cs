@@ -25,7 +25,7 @@ namespace WinlinkRadioSwitcher
       tests();
       return;
 #endif
-      Application.Run(new Form1());
+      Application.Run(new MainWindow());
     }
 
     public static void tests()

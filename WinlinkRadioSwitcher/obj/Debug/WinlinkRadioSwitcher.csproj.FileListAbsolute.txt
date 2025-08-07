@@ -1,9 +1,7 @@
-C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\bin\Debug\Properties\winlinkRadios.json
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\bin\Debug\WinlinkRadioSwitcher.exe.config
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\bin\Debug\WinlinkRadioSwitcher.exe
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\bin\Debug\WinlinkRadioSwitcher.pdb
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.csproj.AssemblyReference.cache
-C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.Form1.resources
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.Properties.Resources.resources
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.csproj.GenerateResource.cache
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.csproj.CoreCompileInputs.cache
@@ -12,3 +10,4 @@ C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debu
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.SettingsForm.resources
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.RadioSettingsControl.resources
 C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.SettingsSaver.resources
+C:\Users\vincett\source\repos\WinlinkRadioSwitcher\WinlinkRadioSwitcher\obj\Debug\WinlinkRadioSwitcher.MainWindow.resources
