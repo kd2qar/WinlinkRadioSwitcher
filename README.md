@@ -7,9 +7,9 @@ They can be saved under separate names and then copied back into the winlink set
 For example:
 Three radios:
 
-Yaesu FT-991/A
-ICOM 7300
-Yaesu FT-118
+* Yaesu FT-991/A
+* ICOM 7300
+* Yaesu FT-818
 
 Note that this is a work in progress but it does accomplish the main purpose of swapping radio settings in and out of winlink.
 Also it creates backups of the Winlink settings file "RMS Express.ini" each time it modifies the file.
