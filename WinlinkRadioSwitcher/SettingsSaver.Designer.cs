@@ -42,6 +42,7 @@
       this.buttonCopyToRMS = new System.Windows.Forms.Button();
       this.listViewSavedRadios = new System.Windows.Forms.ListView();
       this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.ButtonView = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // label1
@@ -172,10 +173,21 @@
       // 
       this.columnHeaderName.Text = "Name";
       // 
+      // ButtonView
+      // 
+      this.ButtonView.Location = new System.Drawing.Point(432, 71);
+      this.ButtonView.Name = "ButtonView";
+      this.ButtonView.Size = new System.Drawing.Size(75, 23);
+      this.ButtonView.TabIndex = 14;
+      this.ButtonView.Text = "View";
+      this.ButtonView.UseVisualStyleBackColor = true;
+      this.ButtonView.Click += new System.EventHandler(this.ButtonView_Click);
+      // 
       // SettingsSaver
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.ButtonView);
       this.Controls.Add(this.listViewSavedRadios);
       this.Controls.Add(this.buttonCopyToRMS);
       this.Controls.Add(this.buttonCopyFromRMS);
@@ -212,5 +224,6 @@
     private System.Windows.Forms.Button buttonCopyToRMS;
     private System.Windows.Forms.ListView listViewSavedRadios;
     private System.Windows.Forms.ColumnHeader columnHeaderName;
+    private System.Windows.Forms.Button ButtonView;
   }
 }

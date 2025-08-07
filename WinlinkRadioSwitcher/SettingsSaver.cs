@@ -346,5 +346,37 @@ namespace WinlinkRadioSwitcher
       sav.DeleteKey("Radios", saveTo.Guid);
       listViewSavedRadios.Items.Remove(selectedItem);
     }
+
+    private void ButtonView_Click(object sender, EventArgs e)
+    {
+      var sav = GetSavedRadioIni();
+      if (sav == null)
+      {
+        MessageBox.Show("INI files not found. Please check the paths.");
+        return;
+      }
+      if (listViewSavedRadios.SelectedItems.Count == 0)
+      {
+        MessageBox.Show("Please select a radio from the list.");
+        return;
+      }
+      var selectedItem = listViewSavedRadios.SelectedItems[0];
+      var saveTo = selectedItem.Tag as SavedRadio;
+      var d = new Dictionary<string, Dictionary<string, string>>();
+      if (sav.SectionExists(saveTo.ArdopTag))
+      {
+        d.Add("Ardop", sav.ReadSectionAsDictionary(saveTo.ArdopTag));
+      }
+      if (sav.SectionExists(saveTo.VaraTag))
+      {
+        d.Add("Vara", sav.ReadSectionAsDictionary(saveTo.VaraTag));
+      }
+      if (sav.SectionExists(saveTo.VaraFMTag))
+      {
+        d.Add("Vara FM", sav.ReadSectionAsDictionary(saveTo.VaraFMTag));
+      }
+      var settings = new SettingsForm(d);
+      settings.ShowDialog(this);
+    }
   }
 }

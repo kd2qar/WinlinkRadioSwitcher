@@ -28,17 +28,11 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.radioSettingsControl1 = new WinlinkRadioSwitcher.RadioSettingsControl();
       this.ButtonOK = new System.Windows.Forms.Button();
       this.ButtonCancel = new System.Windows.Forms.Button();
+      this.radioSettingsControl1 = new WinlinkRadioSwitcher.RadioSettingsControl();
+      this.ComboBoxTNC = new System.Windows.Forms.ComboBox();
       this.SuspendLayout();
-      // 
-      // radioSettingsControl1
-      // 
-      this.radioSettingsControl1.Location = new System.Drawing.Point(-3, 3);
-      this.radioSettingsControl1.Name = "radioSettingsControl1";
-      this.radioSettingsControl1.Size = new System.Drawing.Size(573, 320);
-      this.radioSettingsControl1.TabIndex = 0;
       // 
       // ButtonOK
       // 
@@ -59,6 +53,21 @@
       this.ButtonCancel.Text = "Cancel";
       this.ButtonCancel.UseVisualStyleBackColor = true;
       // 
+      // radioSettingsControl1
+      // 
+      this.radioSettingsControl1.Location = new System.Drawing.Point(-3, 3);
+      this.radioSettingsControl1.Name = "radioSettingsControl1";
+      this.radioSettingsControl1.Size = new System.Drawing.Size(573, 320);
+      this.radioSettingsControl1.TabIndex = 0;
+      // 
+      // ComboBoxTNC
+      // 
+      this.ComboBoxTNC.FormattingEnabled = true;
+      this.ComboBoxTNC.Location = new System.Drawing.Point(314, 329);
+      this.ComboBoxTNC.Name = "ComboBoxTNC";
+      this.ComboBoxTNC.Size = new System.Drawing.Size(121, 21);
+      this.ComboBoxTNC.TabIndex = 3;
+      // 
       // SettingsForm
       // 
       this.AcceptButton = this.ButtonOK;
@@ -66,6 +75,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.ButtonCancel;
       this.ClientSize = new System.Drawing.Size(561, 357);
+      this.Controls.Add(this.ComboBoxTNC);
       this.Controls.Add(this.ButtonCancel);
       this.Controls.Add(this.ButtonOK);
       this.Controls.Add(this.radioSettingsControl1);
@@ -80,5 +90,6 @@
     private RadioSettingsControl radioSettingsControl1;
     private System.Windows.Forms.Button ButtonOK;
     private System.Windows.Forms.Button ButtonCancel;
+    private System.Windows.Forms.ComboBox ComboBoxTNC;
   }
 }

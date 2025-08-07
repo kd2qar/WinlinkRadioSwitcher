@@ -51,7 +51,7 @@
       this.label3 = new System.Windows.Forms.Label();
       this.TextBoxAntennaSelection = new System.Windows.Forms.TextBox();
       this.label2 = new System.Windows.Forms.Label();
-      this.textBoxRadioModel = new System.Windows.Forms.TextBox();
+      this.TextBoxRadioModel = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
       this.CheckBoxPTT_TTL = new System.Windows.Forms.CheckBox();
@@ -161,7 +161,7 @@
       this.groupBoxRadioSelection.Controls.Add(this.label3);
       this.groupBoxRadioSelection.Controls.Add(this.TextBoxAntennaSelection);
       this.groupBoxRadioSelection.Controls.Add(this.label2);
-      this.groupBoxRadioSelection.Controls.Add(this.textBoxRadioModel);
+      this.groupBoxRadioSelection.Controls.Add(this.TextBoxRadioModel);
       this.groupBoxRadioSelection.Controls.Add(this.label1);
       this.groupBoxRadioSelection.Location = new System.Drawing.Point(3, 3);
       this.groupBoxRadioSelection.Name = "groupBoxRadioSelection";
@@ -311,13 +311,13 @@
       this.label2.TabIndex = 2;
       this.label2.Text = "Antenna Selection";
       // 
-      // textBoxRadioModel
+      // TextBoxRadioModel
       // 
-      this.textBoxRadioModel.Location = new System.Drawing.Point(85, 30);
-      this.textBoxRadioModel.Name = "textBoxRadioModel";
-      this.textBoxRadioModel.Size = new System.Drawing.Size(204, 20);
-      this.textBoxRadioModel.TabIndex = 1;
-      this.textBoxRadioModel.Tag = "Model";
+      this.TextBoxRadioModel.Location = new System.Drawing.Point(85, 30);
+      this.TextBoxRadioModel.Name = "TextBoxRadioModel";
+      this.TextBoxRadioModel.Size = new System.Drawing.Size(204, 20);
+      this.TextBoxRadioModel.TabIndex = 1;
+      this.TextBoxRadioModel.Tag = "Model";
       // 
       // label1
       // 
@@ -443,7 +443,7 @@
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.GroupBox groupBoxRadioSelection;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.TextBox textBoxRadioModel;
+    private System.Windows.Forms.TextBox TextBoxRadioModel;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.TextBox TextBoxAntennaSelection;
     private System.Windows.Forms.CheckBox CheckBoxInternalTuner;

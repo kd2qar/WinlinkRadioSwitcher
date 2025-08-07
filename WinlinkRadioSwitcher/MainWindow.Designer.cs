@@ -66,7 +66,6 @@
       this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
       this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
       this.settingsToolStripMenuItem.Text = "Settings";
-      this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
       // 
       // settingsSaver1
       // 
@@ -75,7 +74,7 @@
       this.settingsSaver1.Size = new System.Drawing.Size(529, 289);
       this.settingsSaver1.TabIndex = 2;
       // 
-      // Form1
+      // MainWindow
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,7 +82,7 @@
       this.Controls.Add(this.settingsSaver1);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
-      this.Name = "Form1";
+      this.Name = "MainWindow";
       this.Text = "Winlink Radio Switcher";
       this.Load += new System.EventHandler(this.Form1_Load);
       this.menuStrip1.ResumeLayout(false);
