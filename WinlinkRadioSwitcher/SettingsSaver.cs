@@ -375,6 +375,11 @@ namespace WinlinkRadioSwitcher
       {
         d.Add("Vara FM", sav.ReadSectionAsDictionary(saveTo.VaraFMTag));
       }
+      if (d.Count == 0)
+      {
+        MessageBox.Show("No settings found for the selected radio: " + saveTo.Name);
+        return;
+      }
       var settings = new SettingsForm(d);
       settings.ShowDialog(this);
     }

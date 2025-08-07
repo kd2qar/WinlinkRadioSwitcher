@@ -37,10 +37,13 @@ namespace WinlinkRadioSwitcher
           }
         }
       };
-      ComboBoxTNC.SelectedIndex = 0;
+     // ComboBoxTNC.SelectedIndex = 0;
       var key1 = _radioSettings.Keys.FirstOrDefault();
-      ComboBoxTNC.SelectedItem = key1;
-      radioSettingsControl1.RadioSettingsList = _radioSettings[key1];
+      if (key1 != null)
+      {
+        ComboBoxTNC.SelectedItem = key1;
+        radioSettingsControl1.RadioSettingsList = _radioSettings[key1];
+      }
     }
     private void SettingsForm_Load(object sender, EventArgs e)
     {
