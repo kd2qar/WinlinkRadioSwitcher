@@ -1,4 +1,6 @@
-﻿namespace WinlinkRadioSwitcher
+﻿using WinlinkRadioSwitcher.Properties;
+
+namespace WinlinkRadioSwitcher
 {
   partial class SettingsSaver
   {
@@ -69,7 +71,8 @@
       this.textBoxWinlinkIniFile.Name = "textBoxWinlinkIniFile";
       this.textBoxWinlinkIniFile.Size = new System.Drawing.Size(201, 20);
       this.textBoxWinlinkIniFile.TabIndex = 2;
-      this.textBoxWinlinkIniFile.Text = "C:\\RMS Express\\RMS Express.ini";
+      this.textBoxWinlinkIniFile.Text = Settings.Default.RMSIniFile;
+      this.textBoxWinlinkIniFile.TextChanged += new System.EventHandler(this.textBoxWinlinkIniFile_TextChanged);
       // 
       // textBoxSavedRadiosFile
       // 
@@ -77,7 +80,8 @@
       this.textBoxSavedRadiosFile.Name = "textBoxSavedRadiosFile";
       this.textBoxSavedRadiosFile.Size = new System.Drawing.Size(201, 20);
       this.textBoxSavedRadiosFile.TabIndex = 3;
-      this.textBoxSavedRadiosFile.Text = "C:\\RMS Express\\SavedRadios.ini";
+      this.textBoxSavedRadiosFile.Text = Settings.Default.SavedRadiosFile;
+      this.textBoxSavedRadiosFile.TextChanged += new System.EventHandler(this.textBoxSavedRadiosFile_TextChanged);
       // 
       // richTextBox1
       // 

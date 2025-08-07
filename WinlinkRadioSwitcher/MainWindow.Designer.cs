@@ -73,6 +73,7 @@
       this.settingsSaver1.Name = "settingsSaver1";
       this.settingsSaver1.Size = new System.Drawing.Size(529, 289);
       this.settingsSaver1.TabIndex = 2;
+      this.settingsSaver1.Load += new System.EventHandler(this.settingsSaver1_Load);
       // 
       // MainWindow
       // 

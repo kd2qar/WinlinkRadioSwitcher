@@ -22,7 +22,9 @@ namespace WinlinkRadioSwitcher
 
     }
 
-
-
+    private void settingsSaver1_Load(object sender, EventArgs e)
+    {
+      
+    }
   }
 }

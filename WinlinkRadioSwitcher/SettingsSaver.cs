@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinlinkRadioSwitcher.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinlinkRadioSwitcher
@@ -23,10 +25,10 @@ namespace WinlinkRadioSwitcher
       listViewSavedRadios.MultiSelect = false;
 
       // Initialize any additional components or settings if needed
-#if DEBUG
-      textBoxWinlinkIniFile.Text = "c:\\TEMP\\RMS Express.ini"; // Default path for debugging
-      textBoxSavedRadiosFile.Text = "c:\\TEMP\\SavedRadios.ini"; // Default path for debugging
-#endif
+//#if DEBUG
+//      textBoxWinlinkIniFile.Text = "c:\\TEMP\\RMS Express.ini"; // Default path for debugging
+//      textBoxSavedRadiosFile.Text = "c:\\TEMP\\SavedRadios.ini"; // Default path for debugging
+//#endif
       if (!DesignMode)
       {
         if (System.IO.File.Exists(textBoxWinlinkIniFile.Text))
@@ -39,7 +41,7 @@ namespace WinlinkRadioSwitcher
         }
       }
     }
-   
+
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public List<SavedRadio> Radios
     {
@@ -382,6 +384,32 @@ namespace WinlinkRadioSwitcher
       }
       var settings = new SettingsForm(d);
       settings.ShowDialog(this);
+    }
+
+    private void textBoxSavedRadiosFile_TextChanged(object sender, EventArgs e)
+    {
+      if (!string.IsNullOrEmpty(textBoxSavedRadiosFile.Text))
+      {
+        Settings.Default.SavedRadiosFile = textBoxSavedRadiosFile.Text;
+        if (File.Exists(textBoxSavedRadiosFile.Text))
+        {
+          Settings.Default.Save();
+          ReadSavedFile(textBoxSavedRadiosFile.Text);
+        }
+      }
+    }
+
+    private void textBoxWinlinkIniFile_TextChanged(object sender, EventArgs e)
+    {
+      if (!string.IsNullOrEmpty(textBoxWinlinkIniFile.Text))
+      {
+        Settings.Default.RMSIniFile = textBoxWinlinkIniFile.Text;
+        if (File.Exists(textBoxWinlinkIniFile.Text))
+        {
+          Settings.Default.Save();
+          ReadRMSFile(textBoxWinlinkIniFile.Text);
+        }
+      }
     }
   }
 }
