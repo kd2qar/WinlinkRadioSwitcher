@@ -25,10 +25,10 @@ namespace WinlinkRadioSwitcher
       listViewSavedRadios.MultiSelect = false;
 
       // Initialize any additional components or settings if needed
-//#if DEBUG
-//      textBoxWinlinkIniFile.Text = "c:\\TEMP\\RMS Express.ini"; // Default path for debugging
-//      textBoxSavedRadiosFile.Text = "c:\\TEMP\\SavedRadios.ini"; // Default path for debugging
-//#endif
+      //#if DEBUG
+      //      textBoxWinlinkIniFile.Text = "c:\\TEMP\\RMS Express.ini"; // Default path for debugging
+      //      textBoxSavedRadiosFile.Text = "c:\\TEMP\\SavedRadios.ini"; // Default path for debugging
+      //#endif
       if (!DesignMode)
       {
         if (System.IO.File.Exists(textBoxWinlinkIniFile.Text))
@@ -96,6 +96,7 @@ namespace WinlinkRadioSwitcher
     private void ButtonReadRMSIni_Click(object sender, EventArgs e)
     {
       ReadRMSFile();
+      ReadSavedFile();
     }
     public void ReadSavedFile(string filePath = null)
     {
@@ -152,12 +153,8 @@ namespace WinlinkRadioSwitcher
             richTextBox1.Text += values["Model"] + Environment.NewLine;
 
           }
-          //MessageBox.Show(sb.ToString(), "Ardop Section Data");
         }
-        else
-        {
-          MessageBox.Show("Section 'Ardop' does not exist in the file.", "Error");
-        }
+        richTextBox1.Text += Environment.NewLine;
         if (ini.SectionExists("Vara"))
         {
           richTextBox1.Text += "Vara Settings" + Environment.NewLine;
@@ -167,17 +164,23 @@ namespace WinlinkRadioSwitcher
             richTextBox1.Text += values["Model"] + Environment.NewLine;
 
           }
-          //MessageBox.Show(sb.ToString(), "Vara Section Data");
         }
-        else
+        richTextBox1.Text += Environment.NewLine;
+        if (ini.SectionExists("Vara FM"))
         {
-          MessageBox.Show("Section 'Vara' does not exist in the file.", "Error");
-        }
+          richTextBox1.Text += "Vara FM Settings" + Environment.NewLine;
+          var values = ini.ReadSectionAsDictionary("Vara");
+          if (values.ContainsKey("Model"))
+          {
+            richTextBox1.Text += values["Model"] + Environment.NewLine;
 
+          }
+          richTextBox1.Text += Environment.NewLine;
+        }
       }
 #if DEBUG
       // Logic to read the RMS file can be added here
-     // MessageBox.Show("RMS file read successfully!");
+      // MessageBox.Show("RMS file read successfully!");
 #endif
     }
 
@@ -323,7 +326,8 @@ namespace WinlinkRadioSwitcher
           ini.WriteSection("Vara FM", section);
         }
       }
-
+      ReadRMSFile();
+      ReadSavedFile();
     }
 
     private void ButtonRemove_Click(object sender, EventArgs e)
@@ -386,7 +390,7 @@ namespace WinlinkRadioSwitcher
       settings.ShowDialog(this);
     }
 
-    private void textBoxSavedRadiosFile_TextChanged(object sender, EventArgs e)
+    private void TextBoxSavedRadiosFile_TextChanged(object sender, EventArgs e)
     {
       if (!string.IsNullOrEmpty(textBoxSavedRadiosFile.Text))
       {
@@ -399,13 +403,21 @@ namespace WinlinkRadioSwitcher
       }
     }
 
-    private void textBoxWinlinkIniFile_TextChanged(object sender, EventArgs e)
+    private void TextBoxWinlinkIniFile_TextChanged(object sender, EventArgs e)
     {
       if (!string.IsNullOrEmpty(textBoxWinlinkIniFile.Text))
       {
         Settings.Default.RMSIniFile = textBoxWinlinkIniFile.Text;
         if (File.Exists(textBoxWinlinkIniFile.Text))
         {
+          var dir = Path.GetDirectoryName(textBoxWinlinkIniFile.Text);
+          dir = Path.GetFullPath(dir); // Normalize the path
+          if (Directory.Exists(dir))
+          {
+            var fil = Path.GetFileName(textBoxSavedRadiosFile.Text);
+            var ful = Path.Combine(dir, fil);
+            textBoxSavedRadiosFile.Text = ful;
+          }
           Settings.Default.Save();
           ReadRMSFile(textBoxWinlinkIniFile.Text);
         }

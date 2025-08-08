@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.groupBox1 = new System.Windows.Forms.GroupBox();
-      this.CheckBoxControlTTL = new System.Windows.Forms.CheckBox();
+      this.CheckBoxUseTTL = new System.Windows.Forms.CheckBox();
       this.CheckBoxControlDTR = new System.Windows.Forms.CheckBox();
       this.CheckBoxControlRTS = new System.Windows.Forms.CheckBox();
       this.TextBoxControlBaud = new System.Windows.Forms.TextBox();
@@ -37,7 +37,8 @@
       this.TextBoxControlPort = new System.Windows.Forms.TextBox();
       this.label5 = new System.Windows.Forms.Label();
       this.groupBoxRadioSelection = new System.Windows.Forms.GroupBox();
-      this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.groupBoxCodan = new System.Windows.Forms.GroupBox();
+      this.TextBoxCodanPassword = new System.Windows.Forms.TextBox();
       this.ComboBoxFilterWidth = new System.Windows.Forms.ComboBox();
       this.label4 = new System.Windows.Forms.Label();
       this.CheckBoxALE = new System.Windows.Forms.CheckBox();
@@ -54,7 +55,6 @@
       this.TextBoxRadioModel = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
-      this.CheckBoxPTT_TTL = new System.Windows.Forms.CheckBox();
       this.CheckBoxPTT_DTR = new System.Windows.Forms.CheckBox();
       this.CheckBoxPTT_RTS = new System.Windows.Forms.CheckBox();
       this.TextBoxPTT_Baud = new System.Windows.Forms.TextBox();
@@ -64,13 +64,13 @@
       this.textBox6 = new System.Windows.Forms.TextBox();
       this.groupBox1.SuspendLayout();
       this.groupBoxRadioSelection.SuspendLayout();
-      this.groupBox2.SuspendLayout();
+      this.groupBoxCodan.SuspendLayout();
       this.groupBox3.SuspendLayout();
       this.SuspendLayout();
       // 
       // groupBox1
       // 
-      this.groupBox1.Controls.Add(this.CheckBoxControlTTL);
+      this.groupBox1.Controls.Add(this.CheckBoxUseTTL);
       this.groupBox1.Controls.Add(this.CheckBoxControlDTR);
       this.groupBox1.Controls.Add(this.CheckBoxControlRTS);
       this.groupBox1.Controls.Add(this.TextBoxControlBaud);
@@ -84,16 +84,17 @@
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Radio Control Port";
       // 
-      // CheckBoxControlTTL
+      // CheckBoxUseTTL
       // 
-      this.CheckBoxControlTTL.AutoSize = true;
-      this.CheckBoxControlTTL.Location = new System.Drawing.Point(484, 20);
-      this.CheckBoxControlTTL.Name = "CheckBoxControlTTL";
-      this.CheckBoxControlTTL.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-      this.CheckBoxControlTTL.Size = new System.Drawing.Size(46, 17);
-      this.CheckBoxControlTTL.TabIndex = 4;
-      this.CheckBoxControlTTL.Text = "TTL";
-      this.CheckBoxControlTTL.UseVisualStyleBackColor = true;
+      this.CheckBoxUseTTL.AutoSize = true;
+      this.CheckBoxUseTTL.Location = new System.Drawing.Point(484, 20);
+      this.CheckBoxUseTTL.Name = "CheckBoxUseTTL";
+      this.CheckBoxUseTTL.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+      this.CheckBoxUseTTL.Size = new System.Drawing.Size(46, 17);
+      this.CheckBoxUseTTL.TabIndex = 4;
+      this.CheckBoxUseTTL.Text = "TTL";
+      this.CheckBoxUseTTL.UseVisualStyleBackColor = true;
+      this.CheckBoxUseTTL.CheckedChanged += new System.EventHandler(this.CheckBoxUseTTL_CheckedChanged);
       // 
       // CheckBoxControlDTR
       // 
@@ -105,6 +106,7 @@
       this.CheckBoxControlDTR.TabIndex = 4;
       this.CheckBoxControlDTR.Text = "Enable DTR";
       this.CheckBoxControlDTR.UseVisualStyleBackColor = true;
+      this.CheckBoxControlDTR.CheckedChanged += new System.EventHandler(this.CheckBoxControlDTR_CheckedChanged);
       // 
       // CheckBoxControlRTS
       // 
@@ -116,6 +118,7 @@
       this.CheckBoxControlRTS.TabIndex = 4;
       this.CheckBoxControlRTS.Text = "Enable RTS";
       this.CheckBoxControlRTS.UseVisualStyleBackColor = true;
+      this.CheckBoxControlRTS.CheckedChanged += new System.EventHandler(this.CheckBoxControlRTS_CheckedChanged);
       // 
       // TextBoxControlBaud
       // 
@@ -123,6 +126,7 @@
       this.TextBoxControlBaud.Name = "TextBoxControlBaud";
       this.TextBoxControlBaud.Size = new System.Drawing.Size(75, 20);
       this.TextBoxControlBaud.TabIndex = 3;
+      this.TextBoxControlBaud.TextChanged += new System.EventHandler(this.TextBoxControlBaud_TextChanged);
       // 
       // label6
       // 
@@ -139,6 +143,7 @@
       this.TextBoxControlPort.Name = "TextBoxControlPort";
       this.TextBoxControlPort.Size = new System.Drawing.Size(68, 20);
       this.TextBoxControlPort.TabIndex = 1;
+      this.TextBoxControlPort.TextChanged += new System.EventHandler(this.TextBoxControlPort_TextChanged);
       // 
       // label5
       // 
@@ -151,7 +156,7 @@
       // 
       // groupBoxRadioSelection
       // 
-      this.groupBoxRadioSelection.Controls.Add(this.groupBox2);
+      this.groupBoxRadioSelection.Controls.Add(this.groupBoxCodan);
       this.groupBoxRadioSelection.Controls.Add(this.CheckBoxInternalSoundcard);
       this.groupBoxRadioSelection.Controls.Add(this.CheckBoxInternalTuner);
       this.groupBoxRadioSelection.Controls.Add(this.RadioButtonFM);
@@ -170,27 +175,37 @@
       this.groupBoxRadioSelection.TabStop = false;
       this.groupBoxRadioSelection.Text = "Radio Selection";
       // 
-      // groupBox2
+      // groupBoxCodan
       // 
-      this.groupBox2.Controls.Add(this.ComboBoxFilterWidth);
-      this.groupBox2.Controls.Add(this.label4);
-      this.groupBox2.Controls.Add(this.CheckBoxALE);
-      this.groupBox2.Controls.Add(this.CheckBoxCodanLogin);
-      this.groupBox2.Enabled = false;
-      this.groupBox2.Location = new System.Drawing.Point(12, 111);
-      this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(530, 66);
-      this.groupBox2.TabIndex = 9;
-      this.groupBox2.TabStop = false;
-      this.groupBox2.Text = "Codan Radios";
+      this.groupBoxCodan.Controls.Add(this.TextBoxCodanPassword);
+      this.groupBoxCodan.Controls.Add(this.ComboBoxFilterWidth);
+      this.groupBoxCodan.Controls.Add(this.label4);
+      this.groupBoxCodan.Controls.Add(this.CheckBoxALE);
+      this.groupBoxCodan.Controls.Add(this.CheckBoxCodanLogin);
+      this.groupBoxCodan.Enabled = false;
+      this.groupBoxCodan.Location = new System.Drawing.Point(12, 111);
+      this.groupBoxCodan.Name = "groupBoxCodan";
+      this.groupBoxCodan.Size = new System.Drawing.Size(530, 66);
+      this.groupBoxCodan.TabIndex = 9;
+      this.groupBoxCodan.TabStop = false;
+      this.groupBoxCodan.Text = "Codan Radios";
+      // 
+      // TextBoxCodanPassword
+      // 
+      this.TextBoxCodanPassword.Location = new System.Drawing.Point(204, 17);
+      this.TextBoxCodanPassword.Name = "TextBoxCodanPassword";
+      this.TextBoxCodanPassword.Size = new System.Drawing.Size(152, 20);
+      this.TextBoxCodanPassword.TabIndex = 4;
+      this.TextBoxCodanPassword.TextChanged += new System.EventHandler(this.TextBoxCodanPassword_TextChanged);
       // 
       // ComboBoxFilterWidth
       // 
       this.ComboBoxFilterWidth.FormattingEnabled = true;
       this.ComboBoxFilterWidth.Location = new System.Drawing.Point(444, 20);
       this.ComboBoxFilterWidth.Name = "ComboBoxFilterWidth";
-      this.ComboBoxFilterWidth.Size = new System.Drawing.Size(54, 21);
+      this.ComboBoxFilterWidth.Size = new System.Drawing.Size(74, 21);
       this.ComboBoxFilterWidth.TabIndex = 3;
+      this.ComboBoxFilterWidth.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterWidth_SelectedIndexChanged);
       // 
       // label4
       // 
@@ -210,6 +225,7 @@
       this.CheckBoxALE.TabIndex = 1;
       this.CheckBoxALE.Text = "Enable ALE scanning after session completes";
       this.CheckBoxALE.UseVisualStyleBackColor = true;
+      this.CheckBoxALE.CheckedChanged += new System.EventHandler(this.CheckBoxALE_CheckedChanged);
       // 
       // CheckBoxCodanLogin
       // 
@@ -220,6 +236,7 @@
       this.CheckBoxCodanLogin.TabIndex = 0;
       this.CheckBoxCodanLogin.Text = "Codan login and optional password";
       this.CheckBoxCodanLogin.UseVisualStyleBackColor = true;
+      this.CheckBoxCodanLogin.CheckedChanged += new System.EventHandler(this.CheckBoxCodanLogin_CheckedChanged);
       // 
       // CheckBoxInternalSoundcard
       // 
@@ -231,17 +248,19 @@
       this.CheckBoxInternalSoundcard.TabIndex = 8;
       this.CheckBoxInternalSoundcard.Text = "Use Radio Internal Soundcard";
       this.CheckBoxInternalSoundcard.UseVisualStyleBackColor = true;
+      this.CheckBoxInternalSoundcard.CheckedChanged += new System.EventHandler(this.CheckBoxInternalSoundcard_CheckedChanged);
       // 
       // CheckBoxInternalTuner
       // 
       this.CheckBoxInternalTuner.AutoSize = true;
-      this.CheckBoxInternalTuner.Location = new System.Drawing.Point(418, 63);
+      this.CheckBoxInternalTuner.Location = new System.Drawing.Point(396, 64);
       this.CheckBoxInternalTuner.Name = "CheckBoxInternalTuner";
       this.CheckBoxInternalTuner.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-      this.CheckBoxInternalTuner.Size = new System.Drawing.Size(92, 17);
+      this.CheckBoxInternalTuner.Size = new System.Drawing.Size(114, 17);
       this.CheckBoxInternalTuner.TabIndex = 7;
-      this.CheckBoxInternalTuner.Text = "Internal Tuner";
+      this.CheckBoxInternalTuner.Text = "Use Internal Tuner";
       this.CheckBoxInternalTuner.UseVisualStyleBackColor = true;
+      this.CheckBoxInternalTuner.CheckedChanged += new System.EventHandler(this.CheckBoxInternalTuner_CheckedChanged);
       // 
       // RadioButtonFM
       // 
@@ -254,6 +273,7 @@
       this.RadioButtonFM.TabStop = true;
       this.RadioButtonFM.Text = "FM";
       this.RadioButtonFM.UseVisualStyleBackColor = true;
+      this.RadioButtonFM.CheckedChanged += new System.EventHandler(this.RadioButtonFM_CheckedChanged);
       // 
       // RadioButtonUSBD
       // 
@@ -266,6 +286,7 @@
       this.RadioButtonUSBD.TabStop = true;
       this.RadioButtonUSBD.Text = "USB Digital";
       this.RadioButtonUSBD.UseVisualStyleBackColor = true;
+      this.RadioButtonUSBD.CheckedChanged += new System.EventHandler(this.RadioButtonUSBD_CheckedChanged);
       // 
       // RadioButtonUSB
       // 
@@ -278,6 +299,7 @@
       this.RadioButtonUSB.TabStop = true;
       this.RadioButtonUSB.Text = "USB";
       this.RadioButtonUSB.UseVisualStyleBackColor = true;
+      this.RadioButtonUSB.CheckedChanged += new System.EventHandler(this.RadioButtonUSB_CheckedChanged);
       // 
       // TextBoxIcomAddress
       // 
@@ -285,6 +307,7 @@
       this.TextBoxIcomAddress.Name = "TextBoxIcomAddress";
       this.TextBoxIcomAddress.Size = new System.Drawing.Size(36, 20);
       this.TextBoxIcomAddress.TabIndex = 5;
+      this.TextBoxIcomAddress.TextChanged += new System.EventHandler(this.TextBoxIcomAddress_TextChanged);
       // 
       // label3
       // 
@@ -301,6 +324,7 @@
       this.TextBoxAntennaSelection.Name = "TextBoxAntennaSelection";
       this.TextBoxAntennaSelection.Size = new System.Drawing.Size(110, 20);
       this.TextBoxAntennaSelection.TabIndex = 3;
+      this.TextBoxAntennaSelection.TextChanged += new System.EventHandler(this.TextBoxAntennaSelection_TextChanged);
       // 
       // label2
       // 
@@ -318,6 +342,7 @@
       this.TextBoxRadioModel.Size = new System.Drawing.Size(204, 20);
       this.TextBoxRadioModel.TabIndex = 1;
       this.TextBoxRadioModel.Tag = "Model";
+      this.TextBoxRadioModel.TextChanged += new System.EventHandler(this.TextBoxRadioModel_TextChanged);
       // 
       // label1
       // 
@@ -330,7 +355,6 @@
       // 
       // groupBox3
       // 
-      this.groupBox3.Controls.Add(this.CheckBoxPTT_TTL);
       this.groupBox3.Controls.Add(this.CheckBoxPTT_DTR);
       this.groupBox3.Controls.Add(this.CheckBoxPTT_RTS);
       this.groupBox3.Controls.Add(this.TextBoxPTT_Baud);
@@ -345,17 +369,6 @@
       this.groupBox3.TabStop = false;
       this.groupBox3.Text = "PTT Port (Optional)";
       // 
-      // CheckBoxPTT_TTL
-      // 
-      this.CheckBoxPTT_TTL.AutoSize = true;
-      this.CheckBoxPTT_TTL.Location = new System.Drawing.Point(487, 17);
-      this.CheckBoxPTT_TTL.Name = "CheckBoxPTT_TTL";
-      this.CheckBoxPTT_TTL.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-      this.CheckBoxPTT_TTL.Size = new System.Drawing.Size(46, 17);
-      this.CheckBoxPTT_TTL.TabIndex = 6;
-      this.CheckBoxPTT_TTL.Text = "TTL";
-      this.CheckBoxPTT_TTL.UseVisualStyleBackColor = true;
-      // 
       // CheckBoxPTT_DTR
       // 
       this.CheckBoxPTT_DTR.AutoSize = true;
@@ -366,6 +379,7 @@
       this.CheckBoxPTT_DTR.TabIndex = 7;
       this.CheckBoxPTT_DTR.Text = "Enable DTR";
       this.CheckBoxPTT_DTR.UseVisualStyleBackColor = true;
+      this.CheckBoxPTT_DTR.CheckedChanged += new System.EventHandler(this.CheckBoxPTT_DTR_CheckedChanged);
       // 
       // CheckBoxPTT_RTS
       // 
@@ -377,6 +391,7 @@
       this.CheckBoxPTT_RTS.TabIndex = 8;
       this.CheckBoxPTT_RTS.Text = "Enable RTS";
       this.CheckBoxPTT_RTS.UseVisualStyleBackColor = true;
+      this.CheckBoxPTT_RTS.CheckedChanged += new System.EventHandler(this.CheckBoxPTT_RTS_CheckedChanged);
       // 
       // TextBoxPTT_Baud
       // 
@@ -384,6 +399,7 @@
       this.TextBoxPTT_Baud.Name = "TextBoxPTT_Baud";
       this.TextBoxPTT_Baud.Size = new System.Drawing.Size(75, 20);
       this.TextBoxPTT_Baud.TabIndex = 5;
+      this.TextBoxPTT_Baud.TextChanged += new System.EventHandler(this.TextBoxPTT_Baud_TextChanged);
       // 
       // label8
       // 
@@ -400,6 +416,7 @@
       this.TextBoxPTT_Port.Name = "TextBoxPTT_Port";
       this.TextBoxPTT_Port.Size = new System.Drawing.Size(65, 20);
       this.TextBoxPTT_Port.TabIndex = 1;
+      this.TextBoxPTT_Port.TextChanged += new System.EventHandler(this.TextBoxPTT_Port_TextChanged);
       // 
       // label7
       // 
@@ -430,8 +447,8 @@
       this.groupBox1.PerformLayout();
       this.groupBoxRadioSelection.ResumeLayout(false);
       this.groupBoxRadioSelection.PerformLayout();
-      this.groupBox2.ResumeLayout(false);
-      this.groupBox2.PerformLayout();
+      this.groupBoxCodan.ResumeLayout(false);
+      this.groupBoxCodan.PerformLayout();
       this.groupBox3.ResumeLayout(false);
       this.groupBox3.PerformLayout();
       this.ResumeLayout(false);
@@ -453,7 +470,7 @@
     private System.Windows.Forms.TextBox TextBoxIcomAddress;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.CheckBox CheckBoxInternalSoundcard;
-    private System.Windows.Forms.GroupBox groupBox2;
+    private System.Windows.Forms.GroupBox groupBoxCodan;
     private System.Windows.Forms.CheckBox CheckBoxALE;
     private System.Windows.Forms.CheckBox CheckBoxCodanLogin;
     private System.Windows.Forms.TextBox TextBoxControlBaud;
@@ -462,7 +479,7 @@
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.ComboBox ComboBoxFilterWidth;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.CheckBox CheckBoxControlTTL;
+    private System.Windows.Forms.CheckBox CheckBoxUseTTL;
     private System.Windows.Forms.CheckBox CheckBoxControlDTR;
     private System.Windows.Forms.CheckBox CheckBoxControlRTS;
     private System.Windows.Forms.GroupBox groupBox3;
@@ -471,8 +488,8 @@
     private System.Windows.Forms.TextBox TextBoxPTT_Port;
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.TextBox textBox6;
-    private System.Windows.Forms.CheckBox CheckBoxPTT_TTL;
     private System.Windows.Forms.CheckBox CheckBoxPTT_DTR;
     private System.Windows.Forms.CheckBox CheckBoxPTT_RTS;
+    private System.Windows.Forms.TextBox TextBoxCodanPassword;
   }
 }

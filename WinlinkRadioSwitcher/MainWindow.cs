@@ -16,15 +16,5 @@ namespace WinlinkRadioSwitcher
     {
       InitializeComponent();
     }
-
-    private void Form1_Load(object sender, EventArgs e)
-    {
-
-    }
-
-    private void settingsSaver1_Load(object sender, EventArgs e)
-    {
-      
-    }
   }
 }

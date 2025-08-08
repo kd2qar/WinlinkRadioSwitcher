@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
       this.ButtonOK = new System.Windows.Forms.Button();
       this.ButtonCancel = new System.Windows.Forms.Button();
       this.radioSettingsControl1 = new WinlinkRadioSwitcher.RadioSettingsControl();
@@ -59,6 +60,7 @@
       this.radioSettingsControl1.Name = "radioSettingsControl1";
       this.radioSettingsControl1.Size = new System.Drawing.Size(573, 320);
       this.radioSettingsControl1.TabIndex = 0;
+      this.radioSettingsControl1.Load += new System.EventHandler(this.radioSettingsControl1_Load);
       // 
       // ComboBoxTNC
       // 
@@ -67,6 +69,7 @@
       this.ComboBoxTNC.Name = "ComboBoxTNC";
       this.ComboBoxTNC.Size = new System.Drawing.Size(121, 21);
       this.ComboBoxTNC.TabIndex = 3;
+      this.ComboBoxTNC.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTNC_SelectedIndexChanged);
       // 
       // SettingsForm
       // 
@@ -79,6 +82,7 @@
       this.Controls.Add(this.ButtonCancel);
       this.Controls.Add(this.ButtonOK);
       this.Controls.Add(this.radioSettingsControl1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "SettingsForm";
       this.Text = "Radio Settings";
       this.ResumeLayout(false);

@@ -72,7 +72,7 @@ namespace WinlinkRadioSwitcher
       this.textBoxWinlinkIniFile.Size = new System.Drawing.Size(201, 20);
       this.textBoxWinlinkIniFile.TabIndex = 2;
       this.textBoxWinlinkIniFile.Text = Settings.Default.RMSIniFile;
-      this.textBoxWinlinkIniFile.TextChanged += new System.EventHandler(this.textBoxWinlinkIniFile_TextChanged);
+      this.textBoxWinlinkIniFile.TextChanged += new System.EventHandler(this.TextBoxWinlinkIniFile_TextChanged);
       // 
       // textBoxSavedRadiosFile
       // 
@@ -81,7 +81,7 @@ namespace WinlinkRadioSwitcher
       this.textBoxSavedRadiosFile.Size = new System.Drawing.Size(201, 20);
       this.textBoxSavedRadiosFile.TabIndex = 3;
       this.textBoxSavedRadiosFile.Text = Settings.Default.SavedRadiosFile;
-      this.textBoxSavedRadiosFile.TextChanged += new System.EventHandler(this.textBoxSavedRadiosFile_TextChanged);
+      this.textBoxSavedRadiosFile.TextChanged += new System.EventHandler(this.TextBoxSavedRadiosFile_TextChanged);
       // 
       // richTextBox1
       // 

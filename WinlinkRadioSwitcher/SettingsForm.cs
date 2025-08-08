@@ -50,5 +50,15 @@ namespace WinlinkRadioSwitcher
       // Load settings or initialize components if needed
       //settingsSaver1.LoadSettings();
     }
+
+    private void radioSettingsControl1_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ComboBoxTNC_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
   }
 }

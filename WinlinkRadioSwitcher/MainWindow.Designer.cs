@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +74,6 @@
       this.settingsSaver1.Name = "settingsSaver1";
       this.settingsSaver1.Size = new System.Drawing.Size(529, 289);
       this.settingsSaver1.TabIndex = 2;
-      this.settingsSaver1.Load += new System.EventHandler(this.settingsSaver1_Load);
       // 
       // MainWindow
       // 
@@ -82,10 +82,10 @@
       this.ClientSize = new System.Drawing.Size(559, 318);
       this.Controls.Add(this.settingsSaver1);
       this.Controls.Add(this.menuStrip1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "MainWindow";
       this.Text = "Winlink Radio Switcher";
-      this.Load += new System.EventHandler(this.Form1_Load);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.ResumeLayout(false);
