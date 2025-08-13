@@ -91,22 +91,6 @@ namespace WinlinkRadioSwitcher
         {
           ComboBoxFilterWidth.SelectedIndex = -1; // No selection
         }
-
-        //TextBoxPTT_Baud.Enabled = !radioSetting.Use_TTL;
-        //TextBoxControlBaud.Enabled = !radioSetting.Use_TTL;
-        //TextBoxControlPort.Enabled = !radioSetting.Use_TTL;
-        //TextBoxPTT_Port.Enabled = !radioSetting.Use_TTL;
-        //TextBoxAntennaSelection.Enabled = !radioSetting.Use_TTL;
-        //TextBoxIcomAddress.Enabled = !radioSetting.Use_TTL;
-        //TextBoxRadioModel.Enabled = !radioSetting.Use_TTL;
-        //RadioButtonFM.Enabled = !radioSetting.Use_TTL;
-        //RadioButtonUSB.Enabled = !radioSetting.Use_TTL;
-        //RadioButtonUSBD.Enabled = !radioSetting.Use_TTL;
-        //CheckBoxPTT_DTR.Enabled = !radioSetting.Use_TTL;
-        //CheckBoxPTT_RTS.Enabled = !radioSetting.Use_TTL;
-        //CheckBoxControlDTR.Enabled = !radioSetting.Use_TTL;
-        //CheckBoxControlRTS.Enabled = !radioSetting.Use_TTL;
-        //CheckBoxInternalTuner.Enabled = !radioSetting.Use_TTL;
       }
     }
     Dictionary<string, string> _radioSettings;

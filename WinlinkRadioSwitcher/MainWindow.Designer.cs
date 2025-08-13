@@ -70,6 +70,9 @@
       // 
       // settingsSaver1
       // 
+      this.settingsSaver1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.settingsSaver1.Location = new System.Drawing.Point(18, 27);
       this.settingsSaver1.Name = "settingsSaver1";
       this.settingsSaver1.Size = new System.Drawing.Size(529, 289);

@@ -45,6 +45,7 @@ namespace WinlinkRadioSwitcher
       this.listViewSavedRadios = new System.Windows.Forms.ListView();
       this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.ButtonView = new System.Windows.Forms.Button();
+      this.columnHeaderRadio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.SuspendLayout();
       // 
       // label1
@@ -71,7 +72,7 @@ namespace WinlinkRadioSwitcher
       this.textBoxWinlinkIniFile.Name = "textBoxWinlinkIniFile";
       this.textBoxWinlinkIniFile.Size = new System.Drawing.Size(201, 20);
       this.textBoxWinlinkIniFile.TabIndex = 2;
-      this.textBoxWinlinkIniFile.Text = Settings.Default.RMSIniFile;
+      this.textBoxWinlinkIniFile.Text = global::WinlinkRadioSwitcher.Properties.Settings.Default.RMSIniFile;
       this.textBoxWinlinkIniFile.TextChanged += new System.EventHandler(this.TextBoxWinlinkIniFile_TextChanged);
       // 
       // textBoxSavedRadiosFile
@@ -80,11 +81,13 @@ namespace WinlinkRadioSwitcher
       this.textBoxSavedRadiosFile.Name = "textBoxSavedRadiosFile";
       this.textBoxSavedRadiosFile.Size = new System.Drawing.Size(201, 20);
       this.textBoxSavedRadiosFile.TabIndex = 3;
-      this.textBoxSavedRadiosFile.Text = Settings.Default.SavedRadiosFile;
+      this.textBoxSavedRadiosFile.Text = global::WinlinkRadioSwitcher.Properties.Settings.Default.SavedRadiosFile;
       this.textBoxSavedRadiosFile.TextChanged += new System.EventHandler(this.TextBoxSavedRadiosFile_TextChanged);
       // 
       // richTextBox1
       // 
+      this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.richTextBox1.Location = new System.Drawing.Point(7, 94);
       this.richTextBox1.Name = "richTextBox1";
       this.richTextBox1.Size = new System.Drawing.Size(201, 186);
@@ -161,8 +164,12 @@ namespace WinlinkRadioSwitcher
       // 
       // listViewSavedRadios
       // 
+      this.listViewSavedRadios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.listViewSavedRadios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderName});
+            this.columnHeaderName,
+            this.columnHeaderRadio});
       this.listViewSavedRadios.FullRowSelect = true;
       this.listViewSavedRadios.HideSelection = false;
       this.listViewSavedRadios.LabelWrap = false;
@@ -172,6 +179,7 @@ namespace WinlinkRadioSwitcher
       this.listViewSavedRadios.Size = new System.Drawing.Size(241, 186);
       this.listViewSavedRadios.TabIndex = 13;
       this.listViewSavedRadios.UseCompatibleStateImageBehavior = false;
+      this.listViewSavedRadios.View = System.Windows.Forms.View.Details;
       // 
       // columnHeaderName
       // 
@@ -186,6 +194,11 @@ namespace WinlinkRadioSwitcher
       this.ButtonView.Text = "View";
       this.ButtonView.UseVisualStyleBackColor = true;
       this.ButtonView.Click += new System.EventHandler(this.ButtonView_Click);
+      // 
+      // columnHeaderRadio
+      // 
+      this.columnHeaderRadio.Text = "Radio";
+      this.columnHeaderRadio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
       // 
       // SettingsSaver
       // 
@@ -229,5 +242,6 @@ namespace WinlinkRadioSwitcher
     private System.Windows.Forms.ListView listViewSavedRadios;
     private System.Windows.Forms.ColumnHeader columnHeaderName;
     private System.Windows.Forms.Button ButtonView;
+    private System.Windows.Forms.ColumnHeader columnHeaderRadio;
   }
 }

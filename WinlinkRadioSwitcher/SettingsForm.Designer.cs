@@ -33,6 +33,7 @@
       this.ButtonCancel = new System.Windows.Forms.Button();
       this.radioSettingsControl1 = new WinlinkRadioSwitcher.RadioSettingsControl();
       this.ComboBoxTNC = new System.Windows.Forms.ComboBox();
+      this.label1 = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // ButtonOK
@@ -71,6 +72,16 @@
       this.ComboBoxTNC.TabIndex = 3;
       this.ComboBoxTNC.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTNC_SelectedIndexChanged);
       // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.Location = new System.Drawing.Point(221, 332);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(87, 13);
+      this.label1.TabIndex = 4;
+      this.label1.Text = "SELECT TNC:";
+      // 
       // SettingsForm
       // 
       this.AcceptButton = this.ButtonOK;
@@ -78,6 +89,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.ButtonCancel;
       this.ClientSize = new System.Drawing.Size(561, 357);
+      this.Controls.Add(this.label1);
       this.Controls.Add(this.ComboBoxTNC);
       this.Controls.Add(this.ButtonCancel);
       this.Controls.Add(this.ButtonOK);
@@ -86,6 +98,7 @@
       this.Name = "SettingsForm";
       this.Text = "Radio Settings";
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
 
@@ -95,5 +108,6 @@
     private System.Windows.Forms.Button ButtonOK;
     private System.Windows.Forms.Button ButtonCancel;
     private System.Windows.Forms.ComboBox ComboBoxTNC;
+    private System.Windows.Forms.Label label1;
   }
 }

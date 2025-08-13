@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinlinkRadioSwitcher.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Schema;
 
 namespace WinlinkRadioSwitcher
 {
@@ -19,8 +20,15 @@ namespace WinlinkRadioSwitcher
     public SettingsSaver()
     {
       InitializeComponent();
-      listViewSavedRadios.View = View.Details;
+      listViewSavedRadios.Columns.Add("Name", 200, HorizontalAlignment.Left);
+      listViewSavedRadios.Columns.Add("Radio", 200, HorizontalAlignment.Left);
+
       listViewSavedRadios.View = View.List;
+      listViewSavedRadios.BindingContext = new BindingContext();
+      listViewSavedRadios.View = View.Details;
+      listViewSavedRadios.View = View.Details;
+      listViewSavedRadios.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+
       listViewSavedRadios.Scrollable = true;
       listViewSavedRadios.MultiSelect = false;
 
@@ -64,6 +72,8 @@ namespace WinlinkRadioSwitcher
         foreach (var radio in value)
         {
           var item = new ListViewItem(radio.Name) { Tag = radio };
+          var sitem = new ListViewItem.ListViewSubItem(item, radio.ArdopTag);
+          item.SubItems.Add(sitem);
           listViewSavedRadios.Items.Add(item);
         }
       }
@@ -106,6 +116,8 @@ namespace WinlinkRadioSwitcher
         textBoxSavedRadiosFile.Text = filePath;
       }
       listViewSavedRadios.Clear();
+      listViewSavedRadios.Columns.Add("Name", 200, HorizontalAlignment.Left);
+      listViewSavedRadios.Columns.Add("Radio", 200, HorizontalAlignment.Left);
       var filePathToRead = textBoxSavedRadiosFile.Text;
       if (System.IO.File.Exists(filePathToRead))
       {
@@ -116,10 +128,43 @@ namespace WinlinkRadioSwitcher
           var section = ini.ReadSectionAsDictionary("Radios");
           foreach (var radio in section)
           {
+            var model = "";
+            var ardopTag = "Ardop_" + radio.Key;
+            var varaTag = "Vara_" + radio.Key;
+            var varaFMTag = "VaraFM_" + radio.Key;
+            var ardopSection = ini.ReadSectionAsDictionary(ardopTag);
+            var VaraSection = ini.ReadSectionAsDictionary(varaTag);
+            var VaraFMSection = ini.ReadSectionAsDictionary(varaFMTag);
+            var somesection = VaraSection ?? ardopSection ?? VaraFMSection;
+            if (somesection != null)
+            {
+
+              //var radioSettings = ini.ReadSectionAsDictionary(radio.Key);
+              var radioSettings = somesection;
+              model = radioSettings.GetValueOrDefault("Model", "None");
+            }
             var item = new ListViewItem(radio.Value) { Tag = new SavedRadio { Guid = radio.Key, Name = radio.Value } };
+            listViewSavedRadios.ContextMenu = new ContextMenu
+            {
+              MenuItems = {
+                new MenuItem("Rename", (s, ev) => {
+                  listViewSavedRadios.LabelEdit = true;
+                  var vi = listViewSavedRadios.SelectedItems.Count > 0 ? listViewSavedRadios.SelectedItems[0] : null;
+                  if (vi == null) return;
+                  vi.BeginEdit();
+                }),
+                new MenuItem("Copy to RMS", (s, ev) => ButtonCopyToRMS_Click(s, ev)),
+                new MenuItem("View Settings", (s, ev) => ButtonView_Click(s,ev)),
+                new MenuItem("Remove", (s, ev) => ButtonRemove_Click(s, ev)),
+                new MenuItem("Add New Radio", (s, ev) => ButtonAdd_Click(s, ev))
+              }
+
+            }
+              ;
+            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, model, Color.Red, Color.PowderBlue, null));
             listViewSavedRadios.Items.Add(item);
           }
-
+          listViewSavedRadios.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
         else
         {
@@ -130,7 +175,11 @@ namespace WinlinkRadioSwitcher
       {
         MessageBox.Show("File does not exist: " + filePathToRead, "Error");
       }
+
     }
+    public string ss() => textBoxSavedRadiosFile.Text;
+    //      "This is a test string to demonstrate the code completion functionality. It is not meant to be functional code, but rather a placeholder for testing purposes.";
+
     public void ReadRMSFile(string rmsFile = null)
     {
       if (!string.IsNullOrEmpty(rmsFile))
@@ -143,58 +192,46 @@ namespace WinlinkRadioSwitcher
       if (System.IO.File.Exists(filePath))
       {
         var ini = new IniFile(filePath);
-        var section = ini.ReadSection("Ardop");
-        if (ini.SectionExists("Ardop"))
-        {
-          richTextBox1.Text += "Ardop Settings" + Environment.NewLine;
-          var values = ini.ReadSectionAsDictionary("Ardop");
-          if (values.ContainsKey("Model"))
-          {
-            richTextBox1.Text += values["Model"] + Environment.NewLine;
 
-          }
-        }
-        richTextBox1.Text += Environment.NewLine;
-        if (ini.SectionExists("Vara"))
+        Action<string> sectionSummary = (sectionName) =>
         {
-          richTextBox1.Text += "Vara Settings" + Environment.NewLine;
-          var values = ini.ReadSectionAsDictionary("Vara");
-          if (values.ContainsKey("Model"))
+          if (ini.SectionExists(sectionName))
           {
-            richTextBox1.Text += values["Model"] + Environment.NewLine;
-
+            richTextBox1.Text += sectionName + " Settings" + Environment.NewLine;
+            var values = ini.ReadSectionAsDictionary(sectionName);
+            Action<string> forKey = (key) =>
+            {
+              if (values.ContainsKey(key))
+              {
+                richTextBox1.Text += key + ": " + values[key] + Environment.NewLine;
+              }
+            };
+            forKey("Model");
+            forKey("Control Port");
+            forKey("Control Baud");
+            forKey("PTT Port");
+            forKey("PTT Baud");
+            richTextBox1.Text += Environment.NewLine;
           }
-        }
-        richTextBox1.Text += Environment.NewLine;
-        if (ini.SectionExists("Vara FM"))
-        {
-          richTextBox1.Text += "Vara FM Settings" + Environment.NewLine;
-          var values = ini.ReadSectionAsDictionary("Vara");
-          if (values.ContainsKey("Model"))
-          {
-            richTextBox1.Text += values["Model"] + Environment.NewLine;
-
-          }
-          richTextBox1.Text += Environment.NewLine;
-        }
+        };
+        sectionSummary("Ardop");
+        sectionSummary("Vara");
+        sectionSummary("Vara FM");
       }
     }
 
     private void ButtonAdd_Click(object sender, EventArgs e)
     {
       listViewSavedRadios.LabelEdit = true;
-      var item = listViewSavedRadios.Items.Add(string.Empty);
-      item.Tag = new SavedRadio();
-      listViewSavedRadios.AfterLabelEdit += ListViewSavedRadios_AfterLabelEdit;
-      item.BeginEdit();
-      //listViewSavedRadios.LabelEdit = false; // Disable label editing after adding the item
 
       // Add a new item to the ListView, with an empty label
       // (you can set any default properties that you want to here)
-      //ListViewItem item = listView1.Items.Add(String.Empty);
+      var item = listViewSavedRadios.Items.Add(string.Empty);
+      item.Tag = new SavedRadio();
+      listViewSavedRadios.AfterLabelEdit += ListViewSavedRadios_AfterLabelEdit;
 
       // Place the newly-added item into edit mode immediately
-      //item.BeginEdit();
+      item.BeginEdit();
     }
 
     private void ListViewSavedRadios_AfterLabelEdit(object sender, LabelEditEventArgs e)
@@ -218,7 +255,6 @@ namespace WinlinkRadioSwitcher
           sav?.WriteValue("Radios", radio.Guid, radio.Name);
         }
       }
-      //throw new NotImplementedException();
     }
 
     private void ButtonCopyFromRMS_Click(object sender, EventArgs e)
