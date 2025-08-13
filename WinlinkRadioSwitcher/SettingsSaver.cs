@@ -178,10 +178,6 @@ namespace WinlinkRadioSwitcher
           richTextBox1.Text += Environment.NewLine;
         }
       }
-#if DEBUG
-      // Logic to read the RMS file can be added here
-      // MessageBox.Show("RMS file read successfully!");
-#endif
     }
 
     private void ButtonAdd_Click(object sender, EventArgs e)
@@ -414,6 +410,7 @@ namespace WinlinkRadioSwitcher
           dir = Path.GetFullPath(dir); // Normalize the path
           if (Directory.Exists(dir))
           {
+            // update the path to the save file to match the RMS file (if the path exists)
             var fil = Path.GetFileName(textBoxSavedRadiosFile.Text);
             var ful = Path.Combine(dir, fil);
             textBoxSavedRadiosFile.Text = ful;
