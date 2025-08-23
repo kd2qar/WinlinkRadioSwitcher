@@ -11,6 +11,14 @@ Three radios:
 * ICOM 7300
 * Yaesu FT-818
 
+You can save the settings from winlink for each radio and restore them when needed. It will save the settings for vara and ardop as configured. 
+When you switch radios you can use this tool to copy in the settings for that radio you have previously saved. 
+
+This only saves the TNC settings that winlink manages. It does not touch the settings managed by Vara or Ardop. 
+You will need to restore the soundcard setting in each of those TNCs separately.
+
+You could also use this to move settings between computers by copying the .ini file.
+
 Note that this is a work in progress but it does accomplish the main purpose of swapping radio settings in and out of winlink.
 Also it creates backups of the Winlink settings file "RMS Express.ini" each time it modifies the file.
 You can view the saved settings but if you need to modify them, you will still need to do that in Winlink and then copy them back to your saved pool.
