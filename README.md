@@ -17,7 +17,8 @@ When you switch radios you can use this tool to copy in the settings for that ra
 This only saves the TNC settings that winlink manages. It does not touch the settings managed by Vara or Ardop. 
 You will need to restore the soundcard setting in each of those TNCs separately.
 
-You could also use this to move settings between computers by copying the .ini file.
+You could also use this to move settings between computers by copying the .ini file. Everything is saved in plain text '.ini' file format
+so you can also copy and paste the settings using any text editor as well.
 
 Note that this is a work in progress but it does accomplish the main purpose of swapping radio settings in and out of winlink.
 Also it creates backups of the Winlink settings file "RMS Express.ini" each time it modifies the file.
